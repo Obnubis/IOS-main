@@ -1,0 +1,39 @@
+{
+    "pedidos": [
+      {
+        "id": 1,
+        "usuario_id": 1,
+        "productos": [
+          {
+            "producto_id": 1,
+            "nombre": "Pikachu",
+            "cantidad": 2,
+            "precio_unitario": 15.99
+          },
+          {
+            "producto_id": 2,
+            "nombre": "Lugia",
+            "cantidad": 1,
+            "precio_unitario": 8.49
+          }
+        ],
+        "total": 40.47,
+        "fecha": "2025-02-16T10:45:00Z"
+      },
+      {
+        "id": 2,
+        "usuario_id": 2,
+        "productos": [
+          {
+            "producto_id": 2,
+            "nombre": "Palkia",
+            "cantidad": 3,
+            "precio_unitario": 8.49
+          }
+        ],
+        "total": 25.47,
+        "fecha": "2025-02-17T14:30:00Z"
+      }
+    ]
+  }
+  

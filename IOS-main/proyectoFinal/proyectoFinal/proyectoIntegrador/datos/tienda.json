@@ -1,0 +1,46 @@
+{
+  "CartasComprar": [
+    {
+      "id": 1,
+      "nombre": "Pikachu",
+      "precio": 20.50,
+      "descripcion": "Carta especial de pikachu",
+      "imagen": "pikachu1"
+    },
+    {
+      "id": 2,
+      "nombre": "Dialga",
+      "precio": 50.18,
+      "descripcion": "Carta de Dialga",
+      "imagen": "dialga"
+    },
+    {
+      "id": 3,
+      "nombre": "Darkrai",
+      "precio": 30.25,
+      "descripcion": "Carta de darkrai",
+      "imagen": "darkrai"
+    },
+    {
+      "id": 4,
+      "nombre": "mewtwo",
+      "precio": 20.50,
+      "descripcion": "Carta rara de mewtwo",
+      "imagen": "mewtwo"
+    },
+    {
+      "id": 5,
+      "nombre": "Rayquaza",
+      "precio": 500.73,
+      "descripcion": "Carta de Rayquaza",
+      "imagen": "rayquaza"
+    },
+    {
+      "id": 6,
+      "nombre": "Greninja",
+      "precio": 60.50,
+      "descripcion": "carta de greninja",
+      "imagen": "greninja"
+    }
+  ]
+}

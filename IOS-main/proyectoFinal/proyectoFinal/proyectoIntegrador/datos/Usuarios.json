@@ -1,0 +1,75 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "email": "Juan89@gmail.com",
+      "CP": "67045",
+      "notificaciones": true,
+      "newsletter": true,
+      "password": "12345678",
+      "carrito" : "",
+      "historial" : ""
+    },
+    {
+      "id": 2,
+      "nombre": "Laura",
+      "email": "Laurich@gmail.com",
+      "CP": "50693",
+      "imagen": "",
+      "notificaciones": false,
+      "newsletter": false,
+      "password": "password123",
+      "carrito" : "",
+      "historial" :""
+    },
+    {
+      "id": 3,
+      "nombre": "Mario",
+      "email": "mrobles@gmail.com",
+      "CP": "56230",
+      "imagen": "",
+      "notificaciones": true,
+      "newsletter": true,
+      "password": "securepassword",
+      "carrito" : "",
+      "historial" :""
+    },
+    {
+      "id": 4,
+      "nombre": "Hugo",
+      "email": "Hosma@gmail.com",
+      "CP": "56789",
+      "imagen": "",
+      "notificaciones": true,
+      "newsletter": true,
+      "password": "hugo1234",
+      "carrito" : "",
+      "historial" :""
+    },
+    {
+      "id": 5,
+      "nombre": "Anton",
+      "email": "Alu@gmail.com",
+      "CP": "45456",
+      "imagen": "",
+      "notificaciones": false,
+      "newsletter": false,
+      "password": "anton5678",
+      "carrito" : "",
+      "historial" :""
+    },
+    {
+      "id": 6,
+      "nombre": "Hui",
+      "email": "huihui@gmail.com",
+      "CP": "56723",
+      "imagen": "",
+      "notificaciones": true,
+      "newsletter": true,
+      "password": "huihui123",
+      "carrito" : "",
+      "historial" :""
+    }
+  ]
+}

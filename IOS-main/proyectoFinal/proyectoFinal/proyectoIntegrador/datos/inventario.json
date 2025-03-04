@@ -1,0 +1,15 @@
+{
+    "inventario": [
+      {
+        "id": "1",
+        "nombre": "Pikachu Figura",
+        "stock": 100
+      },
+      {
+        "id": "2",
+        "nombre": "Bola de Cristal",
+        "stock": 50
+      }
+    ]
+  }
+  
