@@ -13,5 +13,6 @@ struct Carta: Codable, Identifiable {
     let nombre: String
     let precio: Double
     let descripcion: String
-    let imagen: String // Nombre de la imagen en Assets
+    let imagen: String
+    let stock: Int
 }

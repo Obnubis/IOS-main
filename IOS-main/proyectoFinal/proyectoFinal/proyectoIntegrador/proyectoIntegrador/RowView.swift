@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct RowView:View {
-    var pokemon: Pokemon
+    var pokemon: Carta
     var body: some View {
         HStack {
                     Image(pokemon.imagen)  // Carga la imagen desde Assets.xcassets
@@ -16,9 +16,9 @@ struct RowView:View {
                         .padding(10)
 
                     VStack(alignment: .leading) {
-                        Text(pokemon.name)
+                        Text(pokemon.nombre)
                             .font(.title)
-                        Text("$\(pokemon.prrecio, specifier: "%.2f")") // Formato de precio con 2 decimales
+                        Text("$\(pokemon.precio, specifier: "%.2f")") // Formato de precio con 2 decimales
                             .font(.subheadline)
                     }
             Spacer()
@@ -27,7 +27,7 @@ struct RowView:View {
 }
 struct RowView_Previews: PreviewProvider {
     static var previews: some View {
-        RowView(pokemon: Pokemon(id: 1, name: "Pikachu", descripcion: "Carta de Pikachu", prrecio: 200, imagen: "pikachu1"))
+        RowView(pokemon: Carta(id: 1, nombre: "Pikachu", precio: 200, descripcion: "Carta de Pikachu", imagen: "pikachu1", stock: 1))
             .previewLayout(.fixed(width: 400, height: 100))
     }
 }

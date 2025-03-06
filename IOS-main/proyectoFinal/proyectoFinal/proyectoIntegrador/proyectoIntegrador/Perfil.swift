@@ -6,7 +6,7 @@ struct Perfil: View {
     @Binding var isLoggedIn: Bool
     
     @State private var showLogoutAlert = false
-    @State private var isEditing = false  
+    @State private var isEditing = false
     @State private var nombre: String
     @State private var email: String
     @State private var CP: String

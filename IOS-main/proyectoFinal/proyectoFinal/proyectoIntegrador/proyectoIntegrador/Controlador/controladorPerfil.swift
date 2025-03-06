@@ -13,26 +13,24 @@ class PerfilController: ObservableObject {
         cargarUsuarios()
     }
 
+    // Método para cargar los usuarios desde el archivo JSON
     func cargarUsuarios() {
-        // Solo carga los datos si no han sido cargados previamente
-        if datosCargados {
-            return
-        }
+        if datosCargados { return } // Evitar carga múltiple
 
         let fileURL = obtenerURLArchivo()
         do {
             let data = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
             let resultado = try decoder.decode([String: [Usuario]].self, from: data)
+            
             if let listaUsuarios = resultado["usuarios"] {
                 self.usuarios = listaUsuarios
                 print("Usuarios cargados correctamente: \(usuarios.count) usuarios")
-                print("Primer usuario en JSON: \(usuarios.first?.nombre ?? "No hay usuarios")")
-                // Aquí, puedes encontrar y asignar el usuario específico con el email:
+                
                 if let usuarioEncontrado = usuarios.first(where: { $0.email == usuario.email }) {
-                    self.usuario = usuarioEncontrado  // Asignamos el usuario cargado a la instancia
+                    self.usuario = usuarioEncontrado
                 }
-                datosCargados = true  // Marcamos que ya cargamos los datos
+                datosCargados = true
             } else {
                 print("El JSON no contiene la clave 'usuarios'.")
             }
@@ -41,12 +39,16 @@ class PerfilController: ObservableObject {
         }
     }
 
+    // Método para guardar los usuarios al archivo JSON
     func salvarUsuarios() {
         let fileURL = obtenerURLArchivo()
         do {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
             let data = try encoder.encode(["usuarios": usuarios])
+            
+            print("Guardando datos en: \(fileURL.path)")
+            
             try data.write(to: fileURL, options: .atomicWrite)
             print("Usuarios guardados correctamente en \(fileURL.path)")
         } catch {
@@ -54,11 +56,13 @@ class PerfilController: ObservableObject {
         }
     }
 
+    // Método para cerrar sesión
     func cerrarSesion() {
         print("Sesión cerrada")
         sesionCerrada = true
     }
 
+    // Método para modificar un usuario
     func modificarUsuario(email: String, nuevoNombre: String, nuevaPassword: String, nuevoCP: String, nuevaImagen: String?, nuevaNotificaciones: Bool, nuevoNewsletter: Bool, nuevoCarrito: String?, nuevoHistorial: String?) {
         if let index = usuarios.firstIndex(where: { $0.email == email }) {
             usuarios[index].nombre = nuevoNombre
@@ -69,12 +73,41 @@ class PerfilController: ObservableObject {
             usuarios[index].carrito = nuevoCarrito
             usuarios[index].historial = nuevoHistorial
 
+            print("Usuario modificado en memoria: \(usuarios[index])")
+
             usuario = usuarios[index]
-            salvarUsuarios()  // Guardar los cambios en el archivo JSON
+            print("Usuario actualizado en memoria: \(usuario)")
+
+            salvarUsuarios() // Guardar cambios en el JSON
+        } else {
+            print("No se encontró el usuario con el email \(email)")
         }
     }
 
+    // Función para obtener la URL del archivo JSON
     private func obtenerURLArchivo() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Usuarios.json")
+    }
+
+    // Método estático para cargar el usuario desde el JSON al iniciar la app
+    static func cargarDesdeJSON() -> PerfilController {
+        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Usuarios.json")
+
+        do {
+            let data = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            let resultado = try decoder.decode([String: [Usuario]].self, from: data)
+
+            if let usuarios = resultado["usuarios"], let usuario = usuarios.first {
+                print("Usuario cargado desde JSON: \(usuario.nombre)")
+                return PerfilController(usuario: usuario)
+            } else {
+                print("No se encontró usuario en JSON. Usando valores por defecto.")
+            }
+        } catch {
+            print("Error al cargar usuarios desde JSON: \(error.localizedDescription)")
+        }
+
+        return PerfilController(usuario: Usuario(id: 0, nombre: "Desconocido", email: "", password: "", CP: "", imagen: nil, newsletter: false, carrito: nil, historial: nil))
     }
 }

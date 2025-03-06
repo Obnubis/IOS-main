@@ -2,14 +2,14 @@ import Foundation
 import SwiftUI
 
 class CargarDatos {
-    var tienda: [Pokemon] = []
+    var tienda: [Carta] = []
     
     init() {
         cargarDatos()
     }
     
     struct TiendaWrapper: Codable {
-        let tienda: [Pokemon] // Se corrigió "tineda" por "tienda"
+        let tienda: [Carta] // Se corrigió "tineda" por "tienda"
     }
     
     func cargarDatos() {
